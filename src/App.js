@@ -1,26 +1,20 @@
-import './App.css';
-import Info from "./info.js";
-import React from "react";
+import "./App.css";
+import SearchBar from "./SearchBar";
+import { useState } from "react";
 
 function App() {
+
+  const [data, setData] = useState({});
+  const updateData = (searchParams) => {
+    setData(searchParams);
+  }
+
   return (
     <div className="App">
-      <Info />
-      <AddItem/>
+      <SearchBar callback={updateData} />
+      <p>{ data.data }</p>
     </div>
   );
-}
-
-class AddItem extends React.Component{
-  render(){
-    const ph="Input Here"
-    return(
-      <form>
-        <label for="input-text">Enter your Input: </label>
-        <input type="text" placeholder={ph} id="input-text"  />
-      </form>
-    );
-  }
 }
 
 export default App;
