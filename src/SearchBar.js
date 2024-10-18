@@ -20,6 +20,7 @@ function SearchBar(props) {
         setMaxPrice(0);
         setType("");
         setBrand("");
+        searchButtonPressed();
     }
         
     return (
