@@ -1,20 +1,20 @@
 import { useState } from "react";
 
-function SearchBar(props) {
+function AddItem(props) {
     const [name, setName] = useState("");
-    const [maxPrice, setMaxPrice] = useState(0);
+    const [price, setPrice] = useState(0);
     const [type, setType] = useState("");
     const [brand, setBrand] = useState("");
     
-    const searchButtonPressed = () => {
-        props.updateSearchParams({
+    const addItemButtonPressed = () => {
+        props.addItem({
             name: name,
-            maxPrice: maxPrice,
+            price: price,
             type: type,
             brand: brand,
         });
         setName("");
-        setMaxPrice(0);
+        setPrice(0);
         setType("");
         setBrand("");
     }
@@ -22,19 +22,19 @@ function SearchBar(props) {
     return (
         <div>
             <form>
-                <h2>Search for an item</h2>
+                <h2>Add an item</h2>
                 <label htmlFor="name-field">Name: </label>
                 <input type="text" id="name-field" value={name} onChange={(e) => setName(e.target.value)}></input>
-                <label htmlFor="maxprice-field">Max Price: </label>
-                <input type="number" id="maxprice-field" value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)}></input>
+                <label htmlFor="price-field">Price: </label>
+                <input type="number" id="price-field" value={price} onChange={(e) => setPrice(e.target.value)}></input>
                 <label htmlFor="type-field">Type: </label>
                 <input type="text" id="type-field" value={type} onChange={(e) => setType(e.target.value)}></input>
                 <label htmlFor="brand-field">Brand: </label>
                 <input type="text" id="brand-field" value={brand} onChange={(e) => setBrand(e.target.value)}></input>
-                <button type="button" onClick={searchButtonPressed}>Search</button>
+                <button type="button" onClick={addItemButtonPressed}>Add Item</button>
             </form>
         </div>
     );
 }
 
-export default SearchBar;
+export default AddItem;
